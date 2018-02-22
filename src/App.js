@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Title from './components/Title';
+import Player from './components/Player'
 
 const players = [
   { id: 1, name: 'Arno', score: 4 },
@@ -16,6 +17,9 @@ class App extends Component {
     return (
         <div className="App">
           <Title content="Scoreboard" />
+          <ul>
+            {players.map((player, index) => <Player key={index} { ...player } />)}
+          </ul>
         </div>
     );
   }
