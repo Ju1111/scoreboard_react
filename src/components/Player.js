@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import './Player.css'
 import PropTypes from 'prop-types'
+import PlusOneButton from './PlusOneButton'
 
 export const playerShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -17,6 +18,7 @@ static propTypes = playerShape.isRequired
       <li className="Player">
         <p className="name">{name}</p>
         <p className="score">{score}</p>
+        <PlusOneButton />
       </li>
     )
   }
