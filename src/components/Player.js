@@ -1,7 +1,15 @@
 import React, { PureComponent } from 'react'
 import './Player.css'
+import PropTypes from 'prop-types'
+
+export const playerShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired
+})
 
 export default class Player extends PureComponent {
+static propTypes = playerShape.isRequired
   render() {
     const { name, score } = this.props
 
