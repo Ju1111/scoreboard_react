@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react'
-import Title from '../components/Title'
-import './Board.css'
-import Player, { playerShape } from '../components/Player'
 import PropTypes from 'prop-types'
+import Title from '../components/Title'
 import Podium from './Podium'
+import Player, { playerShape } from '../components/Player'
+import './Board.css'
 
 export default class Board extends PureComponent {
   static propTypes = {
-  players: PropTypes.arrayOf(playerShape).isRequired,
-  updatePlayer: PropTypes.func.isRequired
+    players: PropTypes.arrayOf(playerShape).isRequired,
+    updatePlayer: PropTypes.func.isRequired
   }
-  renderPlayers() {
+
+  render() {
     const { players, updatePlayer } = this.props
 
     return (
