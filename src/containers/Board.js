@@ -1,30 +1,34 @@
 import React, { PureComponent } from 'react'
 import Title from '../components/Title'
-// import Player from '../components/Player'
 import './Board.css'
 import Player, { playerShape } from '../components/Player'
 import PropTypes from 'prop-types'
+import Podium from './Podium'
 
 export default class Board extends PureComponent {
   static propTypes = {
-  players: PropTypes.arrayOf(playerShape).isRequired
+  players: PropTypes.arrayOf(playerShape).isRequired,
+  updatePlayer: PropTypes.func.isRequired
   }
   renderPlayers() {
-    const { players } = this.props
+    const { players, updatePlayer } = this.props
 
-    return players
-      .sort((p1, p2) => (p2.score - p1.score))
-      .map((player, index) => (
-        <Player key={index} { ...player } />
-      ))
-  }
-
-  render() {
     return (
       <div>
         <Title content="Scoreboard" />
+
+        <Podium players={players} />
+
         <ul className="Board">
-          {this.renderPlayers()}
+          {players
+            .sort((p1, p2) => (p2.score - p1.score))
+            .map((player, index) => (
+            <Player
+              key={index}
+              onChange={updatePlayer}
+              { ...player }
+            />
+          ))}
         </ul>
       </div>
     )
